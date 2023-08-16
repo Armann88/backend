@@ -42,4 +42,16 @@ public function login(LoginRequest $request)
         'user' => new UserResource('user')
     ])->withCookie($cookie);;
 }
+public function logout(Request $request)
+{
+    $request->user()->currentAccessToken()->delete();   //currentAccessToken() vercnum e yntacik tokeny yev ayt tokenin jnjum enq
+    $cookie = cookie()->forget('token');  //forget() moranum e
+    return response()->json([
+        'messege' => 'you have logged out'
+    ])->whithCookie($cookie);
+}
+public function user(Request $request)
+{
+    return new UserResource($request->user());
+}
 }
