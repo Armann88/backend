@@ -27,6 +27,7 @@ class RegisterRequest extends FormRequest
             //1
             'name' => 'required|string|max:255', //partadir|stringic baci vochinch|tareri qanaky
             'email' => 'required|email|unique:users,email|max:255', // //partadir|regexp|chkrknvox
+            'image' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048',
             'password' => [
               'required',
               'string',
